@@ -1,0 +1,50 @@
+{
+  "extends": "./tsconfig.base.json",
+
+  "compilerOptions": {
+    /* ------------------------------ */
+    /* Runtime Target                 */
+    /* ------------------------------ */
+
+    "target": "ES2022",
+
+    /* ------------------------------ */
+    /* Browser Environment            */
+    /* ------------------------------ */
+
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+
+    /* ------------------------------ */
+    /* Bundler Resolution (Vite)      */
+    /* ------------------------------ */
+
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+
+    /* ------------------------------ */
+    /* React                          */
+    /* ------------------------------ */
+
+    "jsx": "react-jsx",
+
+    /* ------------------------------ */
+    /* Environment Types              */
+    /* ------------------------------ */
+
+    "types": ["vite-plus/client"],
+
+    /* ------------------------------ */
+    /* Additional Features            */
+    /* ------------------------------ */
+
+    "resolveJsonModule": true,
+    "allowImportingTsExtensions": true,
+    "useDefineForClassFields": true,
+
+    /* ------------------------------ */
+    /* Vite Handles Build Output      */
+    /* ------------------------------ */
+
+    "noEmit": true
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "@openlet/tsconfig",
+  "version": "0.0.0",
+  "private": true,
+  "files": [
+    "tsconfig.client.json",
+    "tsconfig.node.json"
+  ],
+  "type": "module"
+}

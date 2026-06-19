@@ -1,0 +1,20 @@
+{
+  "name": "@openlet/features",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@openlet/db": "workspace:*",
+    "@openlet/shared": "workspace:*",
+    "@openlet/ui": "workspace:*",
+    "class-variance-authority": "catalog:",
+    "drizzle-orm": "catalog:",
+    "valibot": "catalog:"
+  },
+  "devDependencies": {
+    "@openlet/tsconfig": "workspace:*",
+    "@types/node": "catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:"
+  }
+}

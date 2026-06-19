@@ -1,0 +1,31 @@
+{
+  "name": "@openlet/ui",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./base.css": "./src/styles/base.css",
+    "./lib/*": "./src/lib/*.ts",
+    "./components/*": "./src/components/ui/*.tsx",
+    "./form-fields/*": "./src/components/form-fields/*.tsx",
+    "./hooks/*": "./src/hooks/*.ts"
+  },
+  "dependencies": {
+    "@base-ui/react": "catalog:",
+    "@fontsource-variable/noto-sans": "catalog:",
+    "@fontsource-variable/playfair-display": "catalog:",
+    "@phosphor-icons/react": "catalog:",
+    "class-variance-authority": "catalog:",
+    "clsx": "catalog:",
+    "shadcn": "^4.11.0",
+    "tailwind-merge": "catalog:",
+    "tw-animate-css": "catalog:"
+  },
+  "devDependencies": {
+    "@openlet/tsconfig": "workspace:*",
+    "@types/node": "catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "tailwindcss": "catalog:"
+  }
+}

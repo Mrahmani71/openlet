@@ -1,0 +1,18 @@
+{
+  "extends": "@openlet/tsconfig/tsconfig.client.json",
+  "compilerOptions": {
+    "types": ["node", "vite/client"],
+    "paths": {
+      "@/*": ["./src/*"],
+
+      // For Shadcn CLI
+      "@openlet/ui/*": ["../../packages/ui/*"]
+    }
+  },
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ],
+  "include": ["src/**/*.ts", "src/**/*.tsx"]
+}

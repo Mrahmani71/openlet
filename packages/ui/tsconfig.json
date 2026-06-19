@@ -1,0 +1,11 @@
+{
+  "extends": "@openlet/tsconfig/tsconfig.client.json",
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "compilerOptions": {
+    "resolvePackageJsonImports": true,
+    "types": ["node"],
+    "paths": {
+      "@openlet/ui/*": ["./src/*"]
+    }
+  }
+}

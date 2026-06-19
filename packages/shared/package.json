@@ -1,0 +1,18 @@
+{
+  "name": "@openlet/shared",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./custom-schemas": "./src/custom-schemas.ts",
+    "./custom-valibots": "./src/custom-valibots.ts",
+    "./custom-types": "./src/custom-types.ts"
+  },
+  "dependencies": {
+    "valibot": "catalog:"
+  },
+  "devDependencies": {
+    "@openlet/tsconfig": "workspace:*",
+    "@types/node": "catalog:"
+  }
+}

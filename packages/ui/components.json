@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "base-sera",
+  "rsc": false,
+  "tsx": true,
+  "tailwind": {
+    "config": "",
+    "css": "src/styles/base.css",
+    "baseColor": "neutral",
+    "cssVariables": true,
+    "prefix": ""
+  },
+  "aliases": {
+    "components": "@openlet/ui/components",
+    "hooks": "@openlet/ui/hooks",
+    "lib": "@openlet/ui/lib",
+    "ui": "@openlet/ui/components",
+    "utils": "@openlet/ui/lib/utils"
+  },
+  "iconLibrary": "phosphor",
+  "menuColor": "default",
+  "rtl": false,
+  "menuAccent": "subtle",
+  "registries": {}
+}

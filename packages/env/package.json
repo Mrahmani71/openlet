@@ -1,0 +1,21 @@
+{
+  "name": "@openlet/env",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./env-admin-server": "./src/env-admin-server.ts",
+    "./env-admin-client": "./src/env-admin-client.ts",
+    "./env-web-server": "./src/env-web-server.ts",
+    "./env-web-client": "./src/env-web-client/*"
+  },
+  "dependencies": {
+    "@t3-oss/env-core": "catalog:",
+    "dotenv": "catalog:",
+    "valibot": "catalog:"
+  },
+  "devDependencies": {
+    "@openlet/tsconfig": "workspace:*",
+    "@types/node": "catalog:"
+  }
+}

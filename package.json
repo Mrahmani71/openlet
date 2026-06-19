@@ -1,0 +1,37 @@
+{
+  "name": "openlet",
+  "version": "0.0.0",
+  "description": "An open-source news site built with TanStack Start, Drizzle ORM, and VitePlus",
+  "keywords": [
+    "drizzle",
+    "news",
+    "open-source",
+    "tanstack",
+    "viteplus"
+  ],
+  "license": "MIT",
+  "author": "Mohammad RAHMANI",
+  "type": "module",
+  "scripts": {
+    "ready": "vp check && vp run -r test && vp run -r build",
+    "dev": "pnpm -r --parallel dev",
+    "dev:admin": "pnpm --filter=@openlet/admin dev",
+    "dev:web": "pnpm --filter=@openlet/website dev",
+    "prepare": "vp config",
+    "db:generate": "pnpm --filter=@openlet/db db:generate",
+    "db:migrate": "pnpm --filter=@openlet/db db:migrate",
+    "db:studio": "pnpm --filter=@openlet/db db:studio",
+    "taze": "vpx taze@latest -Ilwr --maturity-period 3",
+    "lint": "vp lint --type-aware --type-check",
+    "lint:fix": "vp lint --type-aware --type-check --fix",
+    "format": "vp fmt",
+    "format:check": "vp fmt --check",
+    "check": "vp check",
+    "check:fix": "vp check --fix",
+    "auth:generate": "vp run --filter=@openlet/website auth:generate"
+  },
+  "devDependencies": {
+    "vite-plus": "catalog:"
+  },
+  "packageManager": "pnpm@11.7.0"
+}
