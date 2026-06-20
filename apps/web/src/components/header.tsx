@@ -7,6 +7,7 @@ import {
   NavigationMenuLink,
 } from "@openlet/ui/components/navigation-menu";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@openlet/ui/components/sheet";
+import { useIsMobile } from "@openlet/ui/hooks/use-mobile";
 import { cn } from "@openlet/ui/lib/utils";
 import {
   ListIcon,
@@ -20,6 +21,10 @@ import {
   FlaskIcon,
   PaintBrushIcon,
   SoccerBallIcon,
+  XLogoIcon,
+  LinkedinLogoIcon,
+  YoutubeLogoIcon,
+  InstagramLogoIcon,
 } from "@phosphor-icons/react";
 import { useState, useEffect, useRef } from "react";
 import { useThemeToggle } from "@/hooks/use-theme-toggle";
@@ -70,6 +75,7 @@ export const Header = () => {
   const [megaOpen, setMegaOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { isDark, toggleTheme } = useThemeToggle();
+  const isMobile = useIsMobile();
   const megaTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
 
   // Scroll detection for nav background
@@ -103,39 +109,28 @@ export const Header = () => {
 
   return (
     <>
-      {/* Breaking News Ticker */}
-      <div className="bg-primary text-primary-foreground">
-        <div className="container mx-auto flex h-9 max-w-8xl items-center overflow-hidden px-6">
-          <div className="z-10 flex h-full shrink-0 items-center gap-2 bg-foreground/20 px-4">
-            <span className="size-2 animate-pulse rounded-full bg-current" />
-            <span className="text-xs font-bold tracking-wider uppercase">Breaking</span>
-          </div>
-          <div className="flex-1 overflow-hidden">
-            <div className="flex animate-[ticker-scroll_60s_linear_infinite] whitespace-nowrap hover:paused motion-reduce:animate-none">
-              <TickerItems />
-              <TickerItems ariaHidden />
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Top Bar */}
       <div className="hidden border-b md:block">
         <div className="container mx-auto flex max-w-8xl items-center justify-between px-6 py-2 text-xs">
           <div className="flex items-center gap-4">
-            <span className="font-medium text-muted-foreground" id="current-date" />
+            <DateDisplay />
             <span className="text-muted-foreground/50">|</span>
             <span className="text-muted-foreground">Edition: Global</span>
           </div>
           <div className="flex items-center gap-4">
-            {["x", "linkedin", "youtube", "instagram"].map((platform) => (
+            {[
+              { label: "X", icon: XLogoIcon },
+              { label: "LinkedIn", icon: LinkedinLogoIcon },
+              { label: "YouTube", icon: YoutubeLogoIcon },
+              { label: "Instagram", icon: InstagramLogoIcon },
+            ].map(({ label, icon: Icon }) => (
               <a
-                key={platform}
+                key={label}
                 href="#"
                 className="text-muted-foreground transition-colors hover:text-primary"
-                aria-label={platform}
+                aria-label={label}
               >
-                <i className={`fa-brands fa-${platform === "x" ? "x-twitter" : platform}`} />
+                <Icon className="size-4" />
               </a>
             ))}
           </div>
@@ -227,72 +222,90 @@ export const Header = () => {
             </a>
 
             {/* Mobile Menu Trigger */}
-            <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen} modal>
-              <Button
-                variant="ghost"
-                size="icon-sm"
-                className="lg:hidden"
-                aria-label="Open navigation menu"
-                onClick={() => setMobileMenuOpen(true)}
-              >
-                <ListIcon />
-              </Button>
-              <SheetContent side="right" className="w-80 max-w-[85vw] p-0">
-                <SheetHeader className="border-b p-6">
-                  <div className="flex items-center justify-between">
-                    <SheetTitle className="font-heading text-lg font-bold tracking-widest">
-                      {APP_CONFIG.name.toUpperCase()}
-                    </SheetTitle>
-                  </div>
-                </SheetHeader>
-                <nav className="flex flex-col p-4">
-                  <a
-                    href="/"
-                    className="rounded-lg px-4 py-3 font-medium transition-colors hover:bg-muted"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    Home
-                  </a>
-                  <div className="mt-6 mb-2 px-4 py-2 text-xs font-semibold tracking-widest text-muted-foreground uppercase">
-                    Categories
-                  </div>
-                  {navLinks.slice(1).map((link) => (
+            {isMobile && (
+              <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen} modal>
+                <Button
+                  variant="ghost"
+                  size="icon-sm"
+                  className="lg:hidden"
+                  aria-label="Open navigation menu"
+                  onClick={() => setMobileMenuOpen(true)}
+                >
+                  <ListIcon />
+                </Button>
+                <SheetContent side="right" className="w-80 max-w-[85vw] p-0">
+                  <SheetHeader className="border-b p-6">
+                    <div className="flex items-center justify-between">
+                      <SheetTitle className="font-heading text-lg font-bold tracking-widest">
+                        {APP_CONFIG.name.toUpperCase()}
+                      </SheetTitle>
+                    </div>
+                  </SheetHeader>
+                  <nav className="flex flex-col p-4">
                     <a
-                      key={link.href}
-                      href={link.href}
-                      className="rounded-lg px-4 py-3 text-muted-foreground transition-colors hover:bg-muted hover:text-primary"
+                      href="/"
+                      className="rounded-lg px-4 py-3 font-medium transition-colors hover:bg-muted"
                       onClick={() => setMobileMenuOpen(false)}
                     >
-                      {link.label}
+                      Home
                     </a>
-                  ))}
-                  <div className="mt-6 mb-2 px-4 py-2 text-xs font-semibold tracking-widest text-muted-foreground uppercase">
-                    More
-                  </div>
-                  {["Opinion", "Video", "Podcasts"].map((label) => (
-                    <a
-                      key={label}
-                      href={`/${label.toLowerCase()}`}
-                      className="rounded-lg px-4 py-3 text-muted-foreground transition-colors hover:bg-muted hover:text-primary"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      {label}
-                    </a>
-                  ))}
-                  <div className="mt-10 border-t pt-6">
-                    <a
-                      href="/subscribe"
-                      className="flex w-full items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition-all hover:bg-primary/80"
-                    >
-                      Subscribe Now
-                    </a>
-                  </div>
-                </nav>
-              </SheetContent>
-            </Sheet>
+                    <div className="mt-6 mb-2 px-4 py-2 text-xs font-semibold tracking-widest text-muted-foreground uppercase">
+                      Categories
+                    </div>
+                    {navLinks.slice(1).map((link) => (
+                      <a
+                        key={link.href}
+                        href={link.href}
+                        className="rounded-lg px-4 py-3 text-muted-foreground transition-colors hover:bg-muted hover:text-primary"
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        {link.label}
+                      </a>
+                    ))}
+                    <div className="mt-6 mb-2 px-4 py-2 text-xs font-semibold tracking-widest text-muted-foreground uppercase">
+                      More
+                    </div>
+                    {["Opinion", "Video", "Podcasts"].map((label) => (
+                      <a
+                        key={label}
+                        href={`/${label.toLowerCase()}`}
+                        className="rounded-lg px-4 py-3 text-muted-foreground transition-colors hover:bg-muted hover:text-primary"
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        {label}
+                      </a>
+                    ))}
+                    <div className="mt-10 border-t pt-6">
+                      <a
+                        href="/subscribe"
+                        className="flex w-full items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition-all hover:bg-primary/80"
+                      >
+                        Subscribe Now
+                      </a>
+                    </div>
+                  </nav>
+                </SheetContent>
+              </Sheet>
+            )}
           </div>
         </div>
       </header>
+
+      {/* Breaking News Ticker */}
+      <div className="bg-primary text-primary-foreground">
+        <div className="container mx-auto flex h-9 max-w-8xl items-center overflow-hidden px-6">
+          <div className="z-10 flex h-full shrink-0 items-center gap-2 bg-foreground/20 px-4">
+            <span className="size-2 animate-pulse rounded-full bg-current" />
+            <span className="text-xs font-bold tracking-wider uppercase">Breaking</span>
+          </div>
+          <div className="flex-1 overflow-hidden">
+            <div className="flex animate-[ticker-scroll_60s_linear_infinite] whitespace-nowrap hover:paused motion-reduce:animate-none">
+              <TickerItems />
+              <TickerItems ariaHidden />
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* Mega Menu Dropdown */}
       <div
@@ -419,6 +432,23 @@ export const Header = () => {
     </>
   );
 };
+
+function DateDisplay() {
+  const [date, setDate] = useState("");
+
+  useEffect(() => {
+    setDate(
+      new Date().toLocaleDateString("en-US", {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      }),
+    );
+  }, []);
+
+  return <span className="font-medium text-muted-foreground">{date}</span>;
+}
 
 function TickerItems({ ariaHidden }: { ariaHidden?: boolean }) {
   const items = [

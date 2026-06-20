@@ -2,6 +2,7 @@ import { Outlet, HeadContent, Scripts, createRootRouteWithContext } from "@tanst
 import appCss from "@/app.css?url";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
+import { ThemeProvider } from "@/components/theme-provider";
 
 import type { ReactNode } from "react";
 
@@ -43,14 +44,16 @@ function RootComponent() {
 
 function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <html className="dark scroll-smooth">
+    <html className="scroll-smooth">
       <head>
         <HeadContent />
       </head>
       <body>
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <ThemeProvider>
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </ThemeProvider>
         <Scripts />
       </body>
     </html>

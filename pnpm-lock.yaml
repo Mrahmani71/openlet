@@ -205,24 +205,108 @@ settings:
 
 catalogs:
   default:
+    '@base-ui/react':
+      specifier: ^1.5.0
+      version: 1.5.0
+    '@fontsource-variable/noto-sans':
+      specifier: ^5.2.10
+      version: 5.2.10
+    '@fontsource-variable/playfair-display':
+      specifier: ^5.2.8
+      version: 5.2.8
+    '@orpc/server':
+      specifier: ^1.14.6
+      version: 1.14.6
+    '@paralleldrive/cuid2':
+      specifier: ^3.3.0
+      version: 3.3.0
+    '@phosphor-icons/react':
+      specifier: ^2.1.10
+      version: 2.1.10
+    '@t3-oss/env-core':
+      specifier: ^0.13.11
+      version: 0.13.11
+    '@tailwindcss/vite':
+      specifier: ^4.3.0
+      version: 4.3.0
+    '@tanstack/react-router':
+      specifier: ^1.170.15
+      version: 1.170.15
+    '@tanstack/react-start':
+      specifier: ^1.168.25
+      version: 1.168.25
     '@types/node':
       specifier: ^25.9.2
       version: 25.9.2
+    '@types/pg':
+      specifier: ^8.20.0
+      version: 8.20.0
     '@types/react':
       specifier: ^19.2.17
       version: 19.2.17
     '@types/react-dom':
       specifier: ^19.2.3
       version: 19.2.3
+    '@vitejs/plugin-react':
+      specifier: ^6.0.2
+      version: 6.0.2
     class-variance-authority:
       specifier: ^0.7.1
       version: 0.7.1
+    clsx:
+      specifier: ^2.1.1
+      version: 2.1.1
     date-fns:
       specifier: ^4.1.0
       version: 4.4.0
+    dotenv:
+      specifier: ^17.4.2
+      version: 17.4.2
+    drizzle-kit:
+      specifier: 1.0.0-rc.3
+      version: 1.0.0-rc.3
+    drizzle-orm:
+      specifier: 1.0.0-rc.3
+      version: 1.0.0-rc.3
+    next-themes:
+      specifier: ^0.4.6
+      version: 0.4.6
+    nitro:
+      specifier: 3.0.260610-beta
+      version: 3.0.260610-beta
+    postgres:
+      specifier: ^3.4.9
+      version: 3.4.9
+    react:
+      specifier: ^19.2.7
+      version: 19.2.7
+    react-dom:
+      specifier: ^19.2.7
+      version: 19.2.7
+    sonner:
+      specifier: ^2.0.7
+      version: 2.0.7
+    tailwind-merge:
+      specifier: ^3.6.0
+      version: 3.6.0
+    tailwindcss:
+      specifier: ^4.3.0
+      version: 4.3.0
+    tw-animate-css:
+      specifier: ^1.4.0
+      version: 1.4.0
+    typescript:
+      specifier: ^6.0.3
+      version: 6.0.3
     valibot:
       specifier: ^1.4.1
       version: 1.4.1
+    vite:
+      specifier: ^8.0.16
+      version: 8.0.16
+    vite-plus:
+      specifier: ^0.1.24
+      version: 0.1.24
 
 packageExtensionsChecksum: sha256-gijaCzr4nl9CNRFo+yptROYONd8g8hubTOkaoQLIyOE=
 
@@ -254,6 +338,9 @@ importers:
       '@tanstack/react-start':
         specifier: 'catalog:'
         version: 1.168.25(crossws@0.4.6(srvx@0.11.16))(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(vite@8.0.16(@types/node@25.9.2)(jiti@2.7.0))
+      next-themes:
+        specifier: 'catalog:'
+        version: 0.4.6(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       nitro:
         specifier: 'catalog:'
         version: 3.0.260610-beta(chokidar@5.0.0)(dotenv@17.4.2)(jiti@2.7.0)(vite@8.0.16(@types/node@25.9.2)(jiti@2.7.0))
@@ -433,9 +520,15 @@ importers:
       clsx:
         specifier: 'catalog:'
         version: 2.1.1
+      next-themes:
+        specifier: 'catalog:'
+        version: 0.4.6(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       shadcn:
         specifier: ^4.11.0
         version: 4.11.0(typescript@6.0.3)
+      sonner:
+        specifier: 'catalog:'
+        version: 2.0.7(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       tailwind-merge:
         specifier: 'catalog:'
         version: 3.6.0
@@ -2892,6 +2985,12 @@ packages:
     resolution: {integrity: sha512-8Ofs/AUQh8MaEcrlq5xOX0CQ9ypTF5dl78mjlMNfOK08fzpgTHQRQPBxcPlEtIw0yRpws+Zo/3r+5WRby7u3Gg==}
     engines: {node: '>= 0.6'}
 
+  next-themes@0.4.6:
+    resolution: {integrity: sha512-pZvgD5L0IEvX5/9GWyHMf3m8BKiVQwsCMHfoFosXtXBMnaS0ZnIJ9ST4b4NqLVKDEm8QBxoNNGNaBv2JNF6XNA==}
+    peerDependencies:
+      react: ^16.8 || ^17 || ^18 || ^19 || ^19.0.0-rc
+      react-dom: ^16.8 || ^17 || ^18 || ^19 || ^19.0.0-rc
+
   nf3@0.3.17:
     resolution: {integrity: sha512-N9zEWySuJFw+gR0lhS5863YsvNeudOdqRyFvNb+jMXbeTJOdrjDqkCpDginIZfUm0LzT1t1nCRiDeqQm/8kirQ==}
 
@@ -3298,6 +3397,12 @@ packages:
 
   sisteransi@1.0.5:
     resolution: {integrity: sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==}
+
+  sonner@2.0.7:
+    resolution: {integrity: sha512-W6ZN4p58k8aDKA4XPcx2hpIQXBRAgyiWVkYhT7CvK6D3iAu7xjvVyhQHg2/iaKJZ1XVJ4r7XuwGL+WGEK37i9w==}
+    peerDependencies:
+      react: ^18.0.0 || ^19.0.0 || ^19.0.0-rc
+      react-dom: ^18.0.0 || ^19.0.0 || ^19.0.0-rc
 
   source-map-js@1.2.1:
     resolution: {integrity: sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==}
@@ -5615,6 +5720,11 @@ snapshots:
 
   negotiator@1.0.0: {}
 
+  next-themes@0.4.6(react-dom@19.2.7(react@19.2.7))(react@19.2.7):
+    dependencies:
+      react: 19.2.7
+      react-dom: 19.2.7(react@19.2.7)
+
   nf3@0.3.17: {}
 
   nitro@3.0.260610-beta(chokidar@5.0.0)(dotenv@17.4.2)(jiti@2.7.0)(vite@8.0.16(@types/node@25.9.2)(jiti@2.7.0)):
@@ -6127,6 +6237,11 @@ snapshots:
       totalist: 3.0.1
 
   sisteransi@1.0.5: {}
+
+  sonner@2.0.7(react-dom@19.2.7(react@19.2.7))(react@19.2.7):
+    dependencies:
+      react: 19.2.7
+      react-dom: 19.2.7(react@19.2.7)
 
   source-map-js@1.2.1: {}
 
