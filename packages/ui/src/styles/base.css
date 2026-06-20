@@ -3,10 +3,11 @@
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/noto-sans";
 @import "@fontsource-variable/playfair-display";
+@source "../../../apps/**/*.tsx";
+@source "../../../features/**/*.tsx";
+@source "../**/*.tsx";
 
 @custom-variant dark (&:is(.dark *));
-@source "../../../apps/**/*.tsx";
-@source "../**/*.tsx";
 
 :root {
   --card: oklch(1 0 0);
@@ -118,6 +119,7 @@
   --color-sidebar-ring: var(--sidebar-ring);
   --font-sans: "Noto Sans Variable", sans-serif;
   --font-heading: "Playfair Display Variable", serif;
+  --container-8xl: 1440px;
 }
 
 @layer base {

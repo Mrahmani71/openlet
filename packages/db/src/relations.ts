@@ -1,8 +1,14 @@
 import { defineRelations } from "drizzle-orm";
-import { articles, articlesAuthors, articlesCategories, articlesTags } from "./schema/articles";
-import { authors } from "./schema/authors";
-import { categories } from "./schema/categories";
-import { tags } from "./schema/tags";
+import {
+  articles,
+  articlesAuthors,
+  articlesCategories,
+  articlesTags,
+} from "./schema/articles/articles-table";
+import { authors } from "./schema/authors/authors-table";
+import { categories } from "./schema/categories/categories-table";
+import { editorPicks } from "./schema/editor-picks/editor-picks-table";
+import { tags } from "./schema/tags/tags-table";
 
 const schemas = {
   articles,
@@ -12,6 +18,7 @@ const schemas = {
   articlesAuthors,
   articlesCategories,
   articlesTags,
+  editorPicks,
 };
 
 export const relations = defineRelations(schemas, (r) => ({
@@ -27,6 +34,10 @@ export const relations = defineRelations(schemas, (r) => ({
     tags: r.many.tags({
       from: r.articles.id.through(r.articlesTags.articleId),
       to: r.tags.id.through(r.articlesTags.tagId),
+    }),
+    editorPicks: r.many.editorPicks({
+      from: r.articles.id,
+      to: r.editorPicks.articleId,
     }),
   },
 
@@ -48,6 +59,13 @@ export const relations = defineRelations(schemas, (r) => ({
     articles: r.many.articles({
       from: r.tags.id.through(r.articlesTags.tagId),
       to: r.articles.id.through(r.articlesTags.articleId),
+    }),
+  },
+
+  editorPicks: {
+    article: r.one.articles({
+      from: r.editorPicks.articleId,
+      to: r.articles.id,
     }),
   },
 }));

@@ -1,5 +1,7 @@
 import { Outlet, HeadContent, Scripts, createRootRouteWithContext } from "@tanstack/react-router";
 import appCss from "@/app.css?url";
+import { Footer } from "@/components/footer";
+import { Header } from "@/components/header";
 
 import type { ReactNode } from "react";
 
@@ -41,12 +43,14 @@ function RootComponent() {
 
 function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <html>
+    <html className="dark scroll-smooth">
       <head>
         <HeadContent />
       </head>
       <body>
-        {children}
+        <Header />
+        <main className="flex-1">{children}</main>
+        <Footer />
         <Scripts />
       </body>
     </html>

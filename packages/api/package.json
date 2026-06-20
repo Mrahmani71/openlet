@@ -1,0 +1,26 @@
+{
+  "name": "@openlet/api",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./web": {
+      "default": "./src/web-entry.ts"
+    },
+    "./admin": {
+      "default": "./src/admin-entry.ts"
+    },
+    "./context": {
+      "default": "./lib/context.ts"
+    }
+  },
+  "dependencies": {
+    "@openlet/db": "workspace:*",
+    "@openlet/features": "workspace:*",
+    "@orpc/server": "catalog:"
+  },
+  "devDependencies": {
+    "@openlet/tsconfig": "workspace:",
+    "@types/node": "catalog:"
+  }
+}

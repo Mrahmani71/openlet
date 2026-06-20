@@ -16,7 +16,7 @@
     "ready": "vp check && vp run -r test && vp run -r build",
     "dev": "pnpm -r --parallel dev",
     "dev:admin": "pnpm --filter=@openlet/admin dev",
-    "dev:web": "pnpm --filter=@openlet/website dev",
+    "dev:web": "pnpm --filter=@openlet/web dev",
     "prepare": "vp config",
     "db:generate": "pnpm --filter=@openlet/db db:generate",
     "db:migrate": "pnpm --filter=@openlet/db db:migrate",

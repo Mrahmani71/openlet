@@ -3,12 +3,16 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
+  "exports": {
+    "./articles/*": "./src/articles/*.ts",
+    "./articles/ui/*": "./src/articles/ui/*.tsx"
+  },
   "dependencies": {
     "@openlet/db": "workspace:*",
     "@openlet/shared": "workspace:*",
     "@openlet/ui": "workspace:*",
     "class-variance-authority": "catalog:",
-    "drizzle-orm": "catalog:",
+    "date-fns": "catalog:",
     "valibot": "catalog:"
   },
   "devDependencies": {

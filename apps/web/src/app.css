@@ -1,1 +1,35 @@
 @import "@openlet/ui/base.css";
+
+@layer base {
+  .article-body p {
+    @apply mb-[1.6em] text-lg leading-relaxed text-muted-foreground;
+  }
+
+  .article-body h2 {
+    @apply mt-[2.5em] mb-[1em] font-heading text-[1.75rem] font-bold;
+  }
+
+  .article-body figure {
+    @apply my-8;
+  }
+
+  .card-lift {
+    transition:
+      transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 0.4s ease;
+  }
+
+  .card-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px -15px rgba(0, 0, 0, 0.3);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .card-lift {
+      transition: none;
+    }
+    .card-lift:hover {
+      transform: none;
+    }
+  }
+}

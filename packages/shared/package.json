@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "exports": {
+    "./config": "./src/config.ts",
     "./custom-schemas": "./src/custom-schemas.ts",
     "./custom-valibots": "./src/custom-valibots.ts",
     "./custom-types": "./src/custom-types.ts"

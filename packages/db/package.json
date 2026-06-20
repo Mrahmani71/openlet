@@ -21,7 +21,8 @@
     "@openlet/shared": "workspace:*",
     "@paralleldrive/cuid2": "catalog:",
     "drizzle-orm": "catalog:",
-    "postgres": "catalog:"
+    "postgres": "catalog:",
+    "valibot": "catalog:"
   },
   "devDependencies": {
     "@openlet/env": "workspace:*",

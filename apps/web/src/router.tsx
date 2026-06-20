@@ -5,6 +5,7 @@ export function getRouter() {
   const router = createRouter({
     routeTree,
     scrollRestoration: true,
+    defaultNotFoundComponent: () => <div>404</div>,
   });
 
   return router;

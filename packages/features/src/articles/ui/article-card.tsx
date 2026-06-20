@@ -1,5 +1,6 @@
 import { cn } from "@openlet/ui/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
+import { formatDistanceToNow } from "date-fns";
 import * as React from "react";
 
 const ArticleCardContext = React.createContext<{
@@ -10,14 +11,14 @@ const ArticleCardContext = React.createContext<{
 
 type ArticleCardVariant = NonNullable<VariantProps<typeof articleCardVariants>["variant"]>;
 
-const articleCardVariants = cva("group overflow-hidden border bg-background transition-all", {
+const articleCardVariants = cva("group overflow-hidden bg-background transition-all", {
   variants: {
     variant: {
-      main: ["flex flex-col", "rounded-xl", "shadow-sm", "hover:shadow-md"],
+      main: ["flex flex-col"],
 
-      sub: ["flex flex-row gap-4", "rounded-lg", "p-3", "hover:bg-muted/50"],
+      sub: ["flex flex-row gap-4", "p-3", "hover:bg-muted/50"],
 
-      wide: ["flex flex-col md:flex-row", "rounded-xl", "shadow-sm", "hover:shadow-md"],
+      wide: ["flex flex-col md:flex-row"],
     },
   },
 
@@ -41,11 +42,11 @@ const imageVariants = cva("overflow-hidden bg-muted", {
 const contentVariants = cva("flex flex-col", {
   variants: {
     variant: {
-      main: "p-6",
+      main: "py-4",
 
-      sub: "flex-1 justify-center",
+      sub: "flex-1 justify-center space-y-1",
 
-      wide: "flex-1 justify-center p-8",
+      wide: "flex-1 justify-center py-4",
     },
   },
 });
@@ -117,7 +118,7 @@ function ArticleCardImage({ className, ...props }: React.ImgHTMLAttributes<HTMLI
 
   return (
     <div className={cn(imageVariants({ variant }))}>
-      <img className={cn("h-full w-full object-cover", className)} {...props} />
+      <img className={cn("h-full w-full rounded-md object-cover", className)} {...props} />
     </div>
   );
 }
@@ -149,10 +150,21 @@ function ArticleCardDescription({
   return <p className={cn(descriptionVariants({ variant }), className)} {...props} />;
 }
 
-function ArticleCardMeta({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
-  const { variant } = React.useContext(ArticleCardContext);
+interface ArticleCardMetaProps extends React.HTMLAttributes<HTMLDivElement> {
+  date?: string | Date;
+}
 
-  return <div className={cn(metaVariants({ variant }), className)} {...props} />;
+function ArticleCardMeta({ className, date, children, ...props }: ArticleCardMetaProps) {
+  const { variant } = React.useContext(ArticleCardContext);
+  const formattedDate = date ? formatDistanceToNow(new Date(date), { addSuffix: true }) : null;
+
+  return (
+    <div className={cn(metaVariants({ variant }), className)} {...props}>
+      {formattedDate}
+      {formattedDate && children && <span className="mx-1">·</span>}
+      {children}
+    </div>
+  );
 }
 
 export {

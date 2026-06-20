@@ -5,7 +5,8 @@ export {
   articlesTags,
   articleStatus,
   articlePosition,
-} from "./articles";
-export { authors } from "./authors";
-export { categories } from "./categories";
-export { tags } from "./tags";
+} from "./articles/articles-table";
+export { authors } from "./authors/authors-table";
+export { categories } from "./categories/categories-table";
+export { tags } from "./tags/tags-table";
+export { editorPicks } from "./editor-picks/editor-picks-table";
